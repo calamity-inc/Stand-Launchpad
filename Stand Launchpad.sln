@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stand Launchpad", "Stand Launchpad.csproj", "{5CA46FCF-BB3B-456B-AF43-DEBF97B23EE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CA46FCF-BB3B-456B-AF43-DEBF97B23EE9}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{5CA46FCF-BB3B-456B-AF43-DEBF97B23EE9}.Debug|x64.ActiveCfg = Debug|x64
+		{5CA46FCF-BB3B-456B-AF43-DEBF97B23EE9}.Debug|x64.Build.0 = Debug|x64
+		{5CA46FCF-BB3B-456B-AF43-DEBF97B23EE9}.Release|Any CPU.ActiveCfg = Release|x64
+		{5CA46FCF-BB3B-456B-AF43-DEBF97B23EE9}.Release|x64.ActiveCfg = Release|x64
+		{5CA46FCF-BB3B-456B-AF43-DEBF97B23EE9}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DAFFC5A2-C597-424B-AB6E-24996BEE3070}
+	EndGlobalSection
+EndGlobal
