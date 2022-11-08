@@ -411,18 +411,24 @@ namespace Stand_Launchpad
 				CloseHandle(pHandle);
 			}
 			InfoText.Text = "Injected " + injected.ToString() + "/" + dlls.Count.ToString() + " DLLs.";
-			if (injected == 0 && dlls.Count != 0)
+
+			if (injected == 0)
 			{
-				if (!any_successful_injection && !failedBecauseOfAntiVirus)
+				if (!any_successful_injection
+					&& dlls.Count != 0
+					&& !failedBecauseOfAntiVirus
+					)
 				{
 					showMessageBox("No DLL was injected. You may need to start the Launchpad as Administrator.");
 				}
+
+				EnableReInject();
 			}
 			else
 			{
 				any_successful_injection = true;
+				ReInjectTimer.Start();
 			}
-			ReInjectTimer.Start();
 		}
 
 		private static string generateRandomString(int length)
@@ -569,6 +575,11 @@ namespace Stand_Launchpad
 		private void ReInjectTimer_Tick(object sender, EventArgs e)
 		{
 			ReInjectTimer.Stop();
+			EnableReInject();
+		}
+
+		private void EnableReInject()
+		{
 			InjectBtn.Enabled = true;
 			ProcessScanTimer.Start();
 		}
