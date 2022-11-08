@@ -212,8 +212,9 @@ namespace Stand_Launchpad
 			}
 		}
 
-		private void downloadStandDll()
+		private bool downloadStandDll()
 		{
+			bool success = true;
 			InfoText.Text = "Downloading Stand " + versions[1] + "...";
 			download_progress = 0;
 			progressBar1.Show();
@@ -239,8 +240,10 @@ namespace Stand_Launchpad
 			{
 				File.Delete(stand_dll);
 				showMessageBox("It looks like the DLL download has failed. Ensure you have no anti-virus program interfering.");
+				success = false;
 			}
 			progressBar1.Hide();
+			return success;
 		}
 
 		private void ProcessScanTimer_Tick(object sender, EventArgs e)
@@ -342,7 +345,10 @@ namespace Stand_Launchpad
 			if (dlls.Contains(stand_dll) && !File.Exists(stand_dll))
 			{
 				ensureStandBinDirExists();
-				downloadStandDll();
+				if (!downloadStandDll())
+				{
+					dlls.Remove(stand_dll);
+				}
 			}
 			InfoText.Text = "Injecting...";
 			int injected = 0;
