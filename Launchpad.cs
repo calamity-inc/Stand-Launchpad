@@ -237,6 +237,7 @@ namespace Stand_Launchpad
 			File.Move(stand_dll + ".tmp", stand_dll);
 			if (new FileInfo(stand_dll).Length < 1024)
 			{
+				File.Delete(stand_dll);
 				showMessageBox("It looks like the DLL download has failed. Ensure you have no anti-virus program interfering.");
 			}
 			progressBar1.Hide();
