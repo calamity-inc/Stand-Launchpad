@@ -371,8 +371,8 @@ namespace Stand_Launchpad
 					{
 						Directory.CreateDirectory(temp_dir);
 					}
-                    try
-                    {
+					try
+					{
 						foreach (string dll in dlls)
 						{
 							if (!File.Exists(dll))
@@ -402,11 +402,11 @@ namespace Stand_Launchpad
 							injected++;
 						}
 					}catch(IOException)
-                    {
+					{
 						this.Activate();
 						failedBecauseOfAntiVirus = true;
 						showMessageBox("Your antivirus seems to be preventing injection.\nDisable your anti virus or add an exclusion and try again.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+					}
 				}
 				CloseHandle(pHandle);
 			}
