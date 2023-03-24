@@ -41,6 +41,18 @@ namespace Stand_Launchpad
 		[DllImport("kernel32.dll", SetLastError = true)]
 		private static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttribute, IntPtr dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
 
+		[DllImport("dwmapi.dll", SetLastError = true)]
+		private static extern int DwmSetWindowAttribute(IntPtr hwnd, uint dwAttribute, int[] pvAttribute, uint cbAttribute);
+
+		//dark title bar
+		protected override void OnHandleCreated(EventArgs e)
+		{
+			if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
+			{
+				DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
+			}
+		}
+
 		private static Random random = new Random();
 
 		// Don't forget to update the file version
