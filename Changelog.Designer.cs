@@ -32,10 +32,9 @@ namespace Stand_Launchpad
         {
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
-
-            // 
+            //
             // webBrowser1
-            // 
+            //
             this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webBrowser1.Location = new System.Drawing.Point(0, 0);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
@@ -43,10 +42,9 @@ namespace Stand_Launchpad
             this.webBrowser1.Size = new System.Drawing.Size(800, 450);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Url = new System.Uri("https://stand.gg/help/changelog-launchpad", System.UriKind.Absolute);
-
-            // 
+            //
             // Changelog
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
@@ -54,8 +52,8 @@ namespace Stand_Launchpad
             this.Name = "Changelog";
             this.Text = "Changelog";
             this.Icon = ((System.Drawing.Icon)(new System.ComponentModel.ComponentResourceManager(typeof(Launchpad))).GetObject("$this.Icon"));
-            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -69,7 +67,7 @@ namespace Stand_Launchpad
             var script = document.CreateElement("script");
             script.SetAttribute("type", "text/javascript");
             script.SetAttribute("text", @"document.body.style.backgroundColor = '#101110';
-                              document.body.style.color = '#fefffe';            
+                              document.body.style.color = '#fefffe';
                               var h2Elements = document.getElementsByTagName('h2');
                               for (var i = 0; i < h2Elements.length; i++) {
                                 h2Elements[i].style.color = '#dcdcdc';
