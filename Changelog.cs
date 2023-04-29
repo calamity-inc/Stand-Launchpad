@@ -19,6 +19,7 @@ namespace Stand_Launchpad
         public Changelog()
 		{
 			InitializeComponent();
+            // dark mode title bar
             if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
             {
                 DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
