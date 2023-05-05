@@ -70,6 +70,16 @@ namespace Stand_Launchpad
 
 		public Launchpad()
 		{
+			foreach (Process process in Process.GetProcesses())
+			{
+				if (process.ProcessName == "Stand Launchpad")
+				{
+					showMessageBox("There's another instance of the Stand Launchpad already running!");
+                    			Environment.Exit(1);
+                    			break;
+                		}
+			}
+			
 			InitializeComponent();
 			width_advanced = Width;
 			Text += " " + launchpad_display_version;
