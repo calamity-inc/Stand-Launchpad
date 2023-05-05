@@ -70,9 +70,10 @@ namespace Stand_Launchpad
 
 		public Launchpad()
 		{
+		        int currentProcessId = Process.GetCurrentProcess().Id;
 			foreach (Process process in Process.GetProcesses())
 			{
-				if (process.ProcessName == "Stand Launchpad")
+				if (process.ProcessName == "Stand Launchpad" && process.Id != currentProcessId)
 				{
 					showMessageBox("There's another instance of the Stand Launchpad already running!");
                     			Environment.Exit(1);
