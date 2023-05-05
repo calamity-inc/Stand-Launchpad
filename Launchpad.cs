@@ -248,27 +248,27 @@ namespace Stand_Launchpad
 			}
 			while (!t.Wait(20));
 
-            try
-            {
-                File.Move(stand_dll + ".tmp", stand_dll);
+			try
+			{
+				File.Move(stand_dll + ".tmp", stand_dll);
 			}
 			catch (IOException)
 			{
-                showMessageBox("It looks like the DLL file is currently being used. Ensure you have no other programs interfering.");
-            }
+				showMessageBox("It looks like the DLL file is currently being used. Ensure you have no other programs interfering.");
+			}
 
-            if (new FileInfo(stand_dll).Length < 1024)
-			{
-                try
-                {
+			if (new FileInfo(stand_dll).Length < 1024)
+			{	
+				try
+                		{
 					File.Delete(stand_dll);
 				}
 				catch(IOException)
 				{
-                    showMessageBox("It looks like the DLL file is currently being used and we cannot delete it. Ensure you have no other programs interfering.");
-                }
+                    			showMessageBox("It looks like the DLL file is currently being used and we cannot delete it. Ensure you have no other programs interfering.");
+                		}
 
-                showMessageBox("It looks like the DLL download has failed. Ensure you have no anti-virus program interfering.");
+                		showMessageBox("It looks like the DLL download has failed. Ensure you have no anti-virus program interfering.");
 				success = false;
 			}
 			progressBar1.Hide();
