@@ -58,18 +58,25 @@ namespace Stand_Launchpad
 		// Don't forget to update the file version
 		private const string launchpad_update_version = "1.8.4";
 		private const string launchpad_display_version = "1.8.4";
+
+		private string stand_dir;
+		private string stand_dll;
+
 		private const int width_simple = 248;
 		private readonly int width_advanced;
+
 		private string[] versions;
-		private string stand_dll;
+		private int download_progress = 0;
+
 		private int gta_pid = 0;
 		private bool game_was_open = false;
 		private bool can_auto_inject = true;
 		private bool any_successful_injection = false;
-		private int download_progress = 0;
 
 		public Launchpad()
 		{
+			stand_dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand";
+
 			InitializeComponent();
 			width_advanced = Width;
 			Text += " " + launchpad_display_version;
@@ -113,7 +120,7 @@ namespace Stand_Launchpad
 			ensureStandBinDirExists();
 			HttpClient httpClient = new HttpClient();
 			Task<string> httpTask = httpClient.GetStringAsync("https://stand.gg/versions.txt");
-			DirectoryInfo bin_di = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand\\Bin\\");
+			DirectoryInfo bin_di = new DirectoryInfo(stand_dir + "\\Bin\\");
 			string versions_string = "";
 			try
 			{
@@ -168,7 +175,7 @@ namespace Stand_Launchpad
 			}
 
 			bool any_updates = false;
-			stand_dll = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand\\Bin\\Stand " + versions[1] + ".dll";
+			stand_dll = stand_dir + "\\Bin\\Stand " + versions[1] + ".dll";
 			if (!File.Exists(stand_dll))
 			{
 				try
@@ -214,13 +221,13 @@ namespace Stand_Launchpad
 
 		private void ensureStandBinDirExists()
 		{
-			if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand"))
+			if (!Directory.Exists(stand_dir))
 			{
-				Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand");
+				Directory.CreateDirectory(stand_dir);
 			}
-			if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand\\Bin"))
+			if (!Directory.Exists(stand_dir + "\\Bin"))
 			{
-				Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand\\Bin");
+				Directory.CreateDirectory(stand_dir + "\\Bin");
 			}
 		}
 
@@ -378,7 +385,7 @@ namespace Stand_Launchpad
 				}
 				else
 				{
-					string temp_dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand\\Bin\\Temp";
+					string temp_dir = stand_dir + "\\Bin\\Temp";
 					if (!Directory.Exists(temp_dir))
 					{
 						Directory.CreateDirectory(temp_dir);
@@ -598,7 +605,7 @@ namespace Stand_Launchpad
 
 		private void StandFolderBtn_Click(object sender, EventArgs e)
 		{
-			Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand");
+			Process.Start(stand_dir);
 		}
 
 		private void UpdCheckBtn_Click(object sender, EventArgs e)
