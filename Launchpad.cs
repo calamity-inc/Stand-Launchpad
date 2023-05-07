@@ -60,6 +60,7 @@ namespace Stand_Launchpad
 		private const string launchpad_display_version = "1.8.4";
 
 		private string stand_dir;
+		private FileStream lockfile;
 		private string stand_dll;
 
 		private const int width_simple = 248;
@@ -79,11 +80,18 @@ namespace Stand_Launchpad
 			
 			if (File.Exists(stand_dir + "\\Bin\\Launchpad.lock"))
 			{
-				showMessageBox("Only one instance of the Launchpad can be open at a time.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				Environment.Exit(1);
-				return;
+				try
+				{
+					File.Delete(stand_dir + "\\Bin\\Launchpad.lock");
+				}
+				catch (Exception)
+				{
+					showMessageBox("Only one instance of the Launchpad can be open at a time.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					Environment.Exit(1);
+					return;
+				}
 			}
-			using (File.Create(stand_dir + "\\Bin\\Launchpad.lock")) {}
+			lockfile = File.Create(stand_dir + "\\Bin\\Launchpad.lock");
 
 			InitializeComponent();
 			width_advanced = Width;
@@ -476,6 +484,7 @@ namespace Stand_Launchpad
 			Properties.Settings.Default.GameLauncher = ((DropDownEntry)LauncherType.SelectedItem).Id;
 			saveSettings();
 
+			lockfile.Close();
 			File.Delete(stand_dir + "\\Bin\\Launchpad.lock");
 		}
 
