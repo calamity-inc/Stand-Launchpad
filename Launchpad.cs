@@ -76,6 +76,14 @@ namespace Stand_Launchpad
 		public Launchpad()
 		{
 			stand_dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand";
+			
+			if (File.Exists(stand_dir + "\\Bin\\Launchpad.lock"))
+			{
+				showMessageBox("Only one instance of the Launchpad can be open at a time.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Environment.Exit(1);
+				return;
+			}
+			using (File.Create(stand_dir + "\\Bin\\Launchpad.lock")) {}
 
 			InitializeComponent();
 			width_advanced = Width;
@@ -467,6 +475,8 @@ namespace Stand_Launchpad
 			Properties.Settings.Default.AutoInjectDelaySeconds = (int)AutoInjectDelaySeconds.Value;
 			Properties.Settings.Default.GameLauncher = ((DropDownEntry)LauncherType.SelectedItem).Id;
 			saveSettings();
+
+			File.Delete(stand_dir + "\\Bin\\Launchpad.lock");
 		}
 
 		private void saveSettings()
