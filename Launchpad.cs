@@ -78,6 +78,15 @@ namespace Stand_Launchpad
 		{
 			stand_dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand";
 
+			if (!Directory.Exists(stand_dir))
+			{
+				Directory.CreateDirectory(stand_dir);
+			}
+			if (!Directory.Exists(stand_dir + "\\Bin"))
+			{
+				Directory.CreateDirectory(stand_dir + "\\Bin");
+			}
+
 			if (File.Exists(stand_dir + "\\Bin\\Launchpad.lock"))
 			{
 				try
@@ -133,7 +142,6 @@ namespace Stand_Launchpad
 
 		private bool checkForUpdate(bool recheck)
 		{
-			ensureStandBinDirExists();
 			HttpClient httpClient = new HttpClient();
 			Task<string> httpTask = httpClient.GetStringAsync("https://stand.gg/versions.txt");
 			DirectoryInfo bin_di = new DirectoryInfo(stand_dir + "\\Bin\\");
@@ -232,18 +240,6 @@ namespace Stand_Launchpad
 			lock (e.UserState)
 			{
 				Monitor.Pulse(e.UserState);
-			}
-		}
-
-		private void ensureStandBinDirExists()
-		{
-			if (!Directory.Exists(stand_dir))
-			{
-				Directory.CreateDirectory(stand_dir);
-			}
-			if (!Directory.Exists(stand_dir + "\\Bin"))
-			{
-				Directory.CreateDirectory(stand_dir + "\\Bin");
 			}
 		}
 
@@ -379,7 +375,6 @@ namespace Stand_Launchpad
 			}
 			if (dlls.Contains(stand_dll) && !File.Exists(stand_dll))
 			{
-				ensureStandBinDirExists();
 				if (!downloadStandDll())
 				{
 					dlls.Remove(stand_dll);
