@@ -664,10 +664,26 @@ namespace Stand_Launchpad
 			switch (((DropDownEntry)LauncherType.SelectedItem).Id)
 			{
 				case 0:
-					Process.Start("com.epicgames.launcher://apps/9d2d0eb64d5c44529cece33fe2a46482?action=launch&silent=true");
+					object epicGamesKeyValue = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Epic Games\EpicGamesLauncher", "AppDataPath", null);
+					if (epicGamesKeyValue != null && !string.IsNullOrWhiteSpace(epicGamesKeyValue.ToString()))
+					{
+						Process.Start("com.epicgames.launcher://apps/9d2d0eb64d5c44529cece33fe2a46482?action=launch&silent=true");
+					}
+					else
+					{
+						showMessageBox("Whoops, looks like the Epic Games Launcher isn't installed. Try selecting a different launcher in the dropdown.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					}
 					break;
 				case 1:
-					Process.Start("steam://run/271590");
+					object steamKeyValue = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Valve\Steam", "SteamPath", null);
+					if (steamKeyValue != null && !string.IsNullOrWhiteSpace(steamKeyValue.ToString()))
+					{
+						Process.Start("steam://run/271590");
+					}
+					else
+					{
+						showMessageBox("Whoops, looks like Steam isn't installed. Try selecting a different launcher in the dropdown.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					}
 					break;
 				case 2:
 					try
