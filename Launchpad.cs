@@ -704,7 +704,7 @@ namespace Stand_Launchpad
 								}
 								else
               							{
-              							showMessageBox("Seems like you don't have the Rockstar Games launcher.");
+              								showMessageBox("Seems like you don't have the Rockstar Games launcher.");
 								}
 							}
 						}
