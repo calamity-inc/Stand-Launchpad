@@ -77,7 +77,7 @@ namespace Stand_Launchpad
 		public Launchpad()
 		{
 			stand_dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand";
-			
+
 			if (File.Exists(stand_dir + "\\Bin\\Launchpad.lock"))
 			{
 				try
