@@ -661,24 +661,56 @@ namespace Stand_Launchpad
 
 		private void LaunchBtn_Click(object sender, EventArgs e)
 		{
+			const string epicGamesRegistryKey = @"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Epic Games\EpicGamesLauncher";
+			const string steamRegistryKey = @"HKEY_CURRENT_USER\Software\Valve\Steam";
+			const string rockstarGamesRegistryKey = @"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Rockstar Games\Grand Theft Auto V";
+
 			switch (((DropDownEntry)LauncherType.SelectedItem).Id)
 			{
 				case 0:
-					Process.Start("com.epicgames.launcher://apps/9d2d0eb64d5c44529cece33fe2a46482?action=launch&silent=true");
+          				object epicGamesKeyValue = Registry.GetValue(epicGamesRegistryKey, "AppDataPath", null);
+					if (epicGamesKeyValue != null && !string.IsNullOrWhiteSpace(epicGamesKeyValue.ToString()))
+					{
+						Process.Start("com.epicgames.launcher://apps/9d2d0eb64d5c44529cece33fe2a46482?action=launch&silent=true");
+					}
+					else
+					{
+						showMessageBox("Seems like the Epic Games Launcher isn't installed.");
+					}
 					break;
 				case 1:
-					Process.Start("steam://run/271590");
+          				object steamKeyValue = Registry.GetValue(steamRegistryKey, "SteamPath", null);
+					if (steamKeyValue != null && !string.IsNullOrWhiteSpace(steamKeyValue.ToString()))
+					{
+						Process.Start("steam://run/271590");
+					}
+					else
+					{
+						showMessageBox("Seems like Steam isn't installed.");
+					}
 					break;
 				case 2:
 					try
 					{
-						using (var key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\WOW6432Node\\Rockstar Games\\Launcher"))
+            					object rockstarlauncherKeyValue = Registry.GetValue(rockstarGamesRegistryKey, "InstallFolder", null);
+						if (rockstarlauncherKeyValue != null && !string.IsNullOrWhiteSpace(rockstarlauncherKeyValue.ToString()))
 						{
-							var path = (string) key?.GetValue("InstallFolder");
-							if (path != null)
+							using (var key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\WOW6432Node\\Rockstar Games\\Launcher"))
 							{
-								Process.Start(path + "\\Launcher.exe", "-minmodeApp=gta5");
+								var path = (string) key?.GetValue("InstallFolder");
+								if (path != null)
+								{
+									Process.Start(path + "\\Launcher.exe", "-minmodeApp=gta5");
+								}
+								else
+              							{
+              							showMessageBox("Seems like you don't have the Rockstar Games launcher.");
+								}
 							}
+						}
+						else
+						{
+							showMessageBox("Seems like you don't have the game on Rockstar Games launcher.");
 						}
 					}
 					catch (Exception ex)
