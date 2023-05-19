@@ -91,6 +91,7 @@ namespace Stand_Launchpad
 					return;
 				}
 			}
+			Directory.CreateDirectory(stand_dir + "\\Bin");
 			lockfile = File.Create(stand_dir + "\\Bin\\Launchpad.lock");
 
 			InitializeComponent();
