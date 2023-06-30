@@ -202,19 +202,23 @@ namespace Stand_Launchpad
 			stand_dll = stand_dir + "\\Bin\\Stand " + versions[1] + ".dll";
 			if (!File.Exists(stand_dll))
 			{
-				try
+				if (downloadStandDll())
 				{
+					// We just successfully downloaded the latest Stand DLL, delete the old stuff.
 					foreach (FileInfo file in bin_di.GetFiles())
 					{
-						file.Delete();
+						if (file.Name.StartsWith("Stand ") && file.Name.EndsWith(".dll"))
+						{
+							try
+							{
+								file.Delete();
+							}
+							catch (Exception ex)
+							{
+								Console.WriteLine(ex.ToString());
+							}
+						}
 					}
-					foreach (DirectoryInfo dir in bin_di.GetDirectories())
-					{
-						dir.Delete(true);
-					}
-				}
-				catch (Exception)
-				{
 				}
 				downloadStandDll();
 				any_updates = true;
@@ -400,6 +404,21 @@ namespace Stand_Launchpad
 					if (!Directory.Exists(temp_dir))
 					{
 						Directory.CreateDirectory(temp_dir);
+					}
+					else
+					{
+						DirectoryInfo temp_di = new DirectoryInfo(temp_dir);
+						foreach (FileInfo file in temp_di.GetFiles())
+						{
+							try
+							{
+								file.Delete();
+							}
+							catch (Exception ex)
+							{
+								Console.WriteLine(ex.ToString());
+							}
+						}
 					}
 					try
 					{
