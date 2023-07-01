@@ -16,6 +16,13 @@ using Microsoft.Win32;
 
 namespace Stand_Launchpad
 {
+	enum LauncherId
+	{
+		EGS = 0,
+		STEAM,
+		RSG,
+	}
+
 	[SuppressMessage("ReSharper", "InconsistentNaming")]
 	[SuppressMessage("ReSharper", "LocalizableElement")]
 	public partial class Launchpad : Form
@@ -107,9 +114,9 @@ namespace Stand_Launchpad
 			Text += " " + launchpad_display_version;
 			LauncherType.DataSource = new[]
 			{
-				new DropDownEntry(0, "Epic Games"),
-				new DropDownEntry(1, "Steam"),
-				new DropDownEntry(2, "Rockstar Games"),
+				new DropDownEntry((int)LauncherId.EGS, "Epic Games"),
+				new DropDownEntry((int)LauncherId.STEAM, "Steam"),
+				new DropDownEntry((int)LauncherId.RSG, "Rockstar Games"),
 			};
 
 			if (Properties.Settings.Default.MustUpgrade)
@@ -680,10 +687,10 @@ namespace Stand_Launchpad
 		{
 			switch (((DropDownEntry)LauncherType.SelectedItem).Id)
 			{
-				case 0:
+				case (int)LauncherId.EGS:
 					Process.Start("com.epicgames.launcher://apps/9d2d0eb64d5c44529cece33fe2a46482?action=launch&silent=true");
 					break;
-				case 1:
+				case (int)LauncherId.STEAM:
 					object steamKeyValue = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Valve\Steam", "SteamPath", null);
 					if (steamKeyValue != null && !string.IsNullOrWhiteSpace(steamKeyValue.ToString()))
 					{
@@ -694,7 +701,7 @@ namespace Stand_Launchpad
 						showMessageBox("Whoops, looks like Steam isn't installed. Try selecting a different launcher in the dropdown.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					}
 					break;
-				case 2:
+				case (int)LauncherId.RSG:
 					try
 					{
 						using (var key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\WOW6432Node\\Rockstar Games\\Launcher"))
