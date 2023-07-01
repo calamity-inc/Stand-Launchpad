@@ -240,7 +240,7 @@ namespace Stand_Launchpad
 					// We just successfully downloaded the latest Stand DLL, delete the old stuff.
 					foreach (FileInfo file in bin_di.GetFiles())
 					{
-						if (file.Name.StartsWith("Stand ") && file.Name.EndsWith(".dll"))
+						if (isStandDll(file) && getStandVersionFromDll(file) != versions[1])
 						{
 							try
 							{
