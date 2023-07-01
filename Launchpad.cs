@@ -163,6 +163,16 @@ namespace Stand_Launchpad
 			ProcessScanTimer.Start();
 		}
 
+		private bool isStandDll(FileInfo file)
+		{
+			return file.Name.StartsWith("Stand ") && file.Name.EndsWith(".dll");
+		}
+
+		private string getStandVersionFromDll(FileInfo file)
+		{
+			return file.Name.Substring(6, file.Name.Length - 6 - 4);
+		}
+
 		private bool checkForUpdate(bool recheck)
 		{
 			HttpClient httpClient = new HttpClient();
@@ -178,9 +188,9 @@ namespace Stand_Launchpad
 			{
 				foreach (FileInfo file in bin_di.GetFiles())
 				{
-					if (file.Name.StartsWith("Stand ") && file.Name.EndsWith(".dll"))
+					if (isStandDll(file))
 					{
-						versions_string = launchpad_update_version + ":" + file.Name.Substring(6, file.Name.Length - 6 - 4);
+						versions_string = launchpad_update_version + ":" + getStandVersionFromDll(file);
 					}
 				}
 			}
