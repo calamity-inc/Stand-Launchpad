@@ -128,7 +128,7 @@ namespace Stand_Launchpad
 
 			AutoInjectCheckBox.Checked = Properties.Settings.Default.AutoInject;
 			AutoInjectDelaySeconds.Value = Properties.Settings.Default.AutoInjectDelaySeconds;
-			LauncherType.SelectedIndex = Properties.Settings.Default.GameLauncher;
+			LauncherType.SelectedValue = Properties.Settings.Default.GameLauncher;
 
 			toggleInjectOrLaunchBtn(false);
 			UpdateTimer.Start();
