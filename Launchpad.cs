@@ -123,6 +123,22 @@ namespace Stand_Launchpad
 			{
 				Properties.Settings.Default.Upgrade();
 				Properties.Settings.Default.MustUpgrade = false;
+
+				if (Properties.Settings.Default.Version == -1)
+				{
+					// First-time user, set current config version.
+					Properties.Settings.Default.Version = 0;
+				}
+				else
+				{
+					// Not a first-time user, may upgrade config here in the future.
+					/*if (Properties.Settings.Default.Version == 0)
+					{
+						// ...
+						Properties.Settings.Default.Version = 1;
+					}*/
+				}
+
 				Properties.Settings.Default.Save();
 			}
 
