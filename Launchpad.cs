@@ -114,8 +114,8 @@ namespace Stand_Launchpad
 			Text += " " + launchpad_display_version;
 			LauncherType.DataSource = new[]
 			{
-				new DropDownEntry((int)LauncherId.EGS, "Epic Games"),
 				new DropDownEntry((int)LauncherId.STEAM, "Steam"),
+				new DropDownEntry((int)LauncherId.EGS, "Epic Games"),
 				new DropDownEntry((int)LauncherId.RSG, "Rockstar Games"),
 			};
 
