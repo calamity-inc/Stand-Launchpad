@@ -220,7 +220,6 @@ namespace Stand_Launchpad
 						}
 					}
 				}
-				downloadStandDll();
 				any_updates = true;
 			}
 			if (versions[0] != launchpad_update_version)
