@@ -196,7 +196,7 @@ namespace Stand_Launchpad
 			}
 			if (versions_string.Length == 0)
 			{
-				showMessageBox("Failed to get version information. Ensure you're connected to the internet and have no anti-virus program or firewall interfering.");
+				showMessageBox("Failed to get version information. Ensure you're connected to the internet and have no antivirus program or firewall interfering.");
 				if (recheck)
 				{
 					return false;
@@ -306,7 +306,7 @@ namespace Stand_Launchpad
 			if (new FileInfo(stand_dll).Length < 1024)
 			{
 				File.Delete(stand_dll);
-				showMessageBox("It looks like the DLL download has failed. Ensure you have no anti-virus program interfering.");
+				showMessageBox("It looks like the DLL download has failed. Ensure you have no antivirus program interfering.");
 				success = false;
 			}
 			progressBar1.Hide();
@@ -485,7 +485,7 @@ namespace Stand_Launchpad
 					{
 						this.Activate();
 						failedBecauseOfAntiVirus = true;
-						showMessageBox("Your antivirus seems to be preventing injection.\nDisable your anti virus or add an exclusion and try again.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						showMessageBox("Your antivirus seems to be preventing injection.\nDisable your antivirus or add an exclusion and try again.", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 				}
 				CloseHandle(pHandle);
