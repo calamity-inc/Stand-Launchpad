@@ -66,7 +66,7 @@
 			this.InjectBtn.Name = "InjectBtn";
 			this.InjectBtn.Size = new System.Drawing.Size(208, 23);
 			this.InjectBtn.TabIndex = 0;
-			this.InjectBtn.Text = "Inject";
+			this.InjectBtn.Text = "注入";
 			this.InjectBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.InjectBtn.UseVisualStyleBackColor = false;
 			this.InjectBtn.Click += new System.EventHandler(this.InjectBtn_Click);
@@ -83,7 +83,7 @@
 			this.InfoText.Name = "InfoText";
 			this.InfoText.Size = new System.Drawing.Size(117, 13);
 			this.InfoText.TabIndex = 9;
-			this.InfoText.Text = "Checking for updates...";
+			this.InfoText.Text = "检查更新中...";
 			// 
 			// AutoInjectCheckBox
 			// 
@@ -94,7 +94,7 @@
 			this.AutoInjectCheckBox.Name = "AutoInjectCheckBox";
 			this.AutoInjectCheckBox.Size = new System.Drawing.Size(202, 17);
 			this.AutoInjectCheckBox.TabIndex = 4;
-			this.AutoInjectCheckBox.Text = "Automatically inject when game starts.";
+			this.AutoInjectCheckBox.Text = "游戏启动时自动注入.";
 			this.AutoInjectCheckBox.UseVisualStyleBackColor = true;
 			this.AutoInjectCheckBox.CheckedChanged += new System.EventHandler(this.AutoInjectCheckBox_CheckedChanged);
 			// 
@@ -112,7 +112,7 @@
 			this.AdvancedBtn.Name = "AdvancedBtn";
 			this.AdvancedBtn.Size = new System.Drawing.Size(208, 23);
 			this.AdvancedBtn.TabIndex = 8;
-			this.AdvancedBtn.Text = "Advanced";
+			this.AdvancedBtn.Text = "高级";
 			this.AdvancedBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.AdvancedBtn.UseVisualStyleBackColor = false;
 			this.AdvancedBtn.Click += new System.EventHandler(this.AdvancedBtn_Click);
@@ -126,7 +126,7 @@
 			this.AddBtn.Name = "AddBtn";
 			this.AddBtn.Size = new System.Drawing.Size(47, 23);
 			this.AddBtn.TabIndex = 12;
-			this.AddBtn.Text = "Add";
+			this.AddBtn.Text = "添加";
 			this.AddBtn.UseVisualStyleBackColor = false;
 			this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
 			// 
@@ -139,7 +139,7 @@
 			this.RemoveBtn.Name = "RemoveBtn";
 			this.RemoveBtn.Size = new System.Drawing.Size(65, 23);
 			this.RemoveBtn.TabIndex = 13;
-			this.RemoveBtn.Text = "Remove";
+			this.RemoveBtn.Text = "移除";
 			this.RemoveBtn.UseVisualStyleBackColor = false;
 			this.RemoveBtn.Click += new System.EventHandler(this.RemoveBtn_Click);
 			// 
@@ -165,7 +165,7 @@
 			this.AutoInjectDelayLabel.Name = "AutoInjectDelayLabel";
 			this.AutoInjectDelayLabel.Size = new System.Drawing.Size(181, 13);
 			this.AutoInjectDelayLabel.TabIndex = 10;
-			this.AutoInjectDelayLabel.Text = "Automatic Injection Delay (Seconds):";
+			this.AutoInjectDelayLabel.Text = "自动注入延迟 (秒):";
 			// 
 			// AutoInjectTimer
 			// 
@@ -192,7 +192,7 @@
 			this.ChanglogBtn.Name = "ChanglogBtn";
 			this.ChanglogBtn.Size = new System.Drawing.Size(74, 23);
 			this.ChanglogBtn.TabIndex = 6;
-			this.ChanglogBtn.Text = "Changelog";
+			this.ChanglogBtn.Text = "更新日志";
 			this.ChanglogBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.ChanglogBtn.UseVisualStyleBackColor = false;
 			this.ChanglogBtn.Click += new System.EventHandler(this.ChangelogBtn_Click);
@@ -211,7 +211,7 @@
 			this.StandFolderBtn.Name = "StandFolderBtn";
 			this.StandFolderBtn.Size = new System.Drawing.Size(208, 23);
 			this.StandFolderBtn.TabIndex = 7;
-			this.StandFolderBtn.Text = "Open Stand Folder";
+			this.StandFolderBtn.Text = "打开 Stand 文件夹";
 			this.StandFolderBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.StandFolderBtn.UseVisualStyleBackColor = false;
 			this.StandFolderBtn.Click += new System.EventHandler(this.StandFolderBtn_Click);
@@ -226,7 +226,7 @@
 			this.UpdCheckBtn.Name = "UpdCheckBtn";
 			this.UpdCheckBtn.Size = new System.Drawing.Size(128, 23);
 			this.UpdCheckBtn.TabIndex = 5;
-			this.UpdCheckBtn.Text = "Check For Updates";
+			this.UpdCheckBtn.Text = "检查更新";
 			this.UpdCheckBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.UpdCheckBtn.UseVisualStyleBackColor = false;
 			this.UpdCheckBtn.Click += new System.EventHandler(this.UpdCheckBtn_Click);
@@ -287,7 +287,7 @@
 			this.LaunchBtn.Name = "LaunchBtn";
 			this.LaunchBtn.Size = new System.Drawing.Size(74, 23);
 			this.LaunchBtn.TabIndex = 1;
-			this.LaunchBtn.Text = "Launch";
+			this.LaunchBtn.Text = "启动";
 			this.LaunchBtn.UseVisualStyleBackColor = false;
 			this.LaunchBtn.Click += new System.EventHandler(this.LaunchBtn_Click);
 			// 
@@ -325,7 +325,7 @@
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.Name = "Launchpad";
-			this.Text = "Stand Launchpad";
+			this.Text = "Stand 启动器";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Launchpad_FormClosing);
 			((System.ComponentModel.ISupportInitialize)(this.AutoInjectDelaySeconds)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dropDownEntryBindingSource)).EndInit();

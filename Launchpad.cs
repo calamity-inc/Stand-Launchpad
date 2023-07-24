@@ -102,7 +102,7 @@ namespace Stand_Launchpad
 				}
 				catch (Exception)
 				{
-					showMessageBox("Only one instance of the Launchpad can be open at a time.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					showMessageBox("最多只能打开一个启动器实例.", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					Environment.Exit(1);
 					return;
 				}
@@ -196,7 +196,7 @@ namespace Stand_Launchpad
 			}
 			if (versions_string.Length == 0)
 			{
-				showMessageBox("Failed to get version information. Ensure you're connected to the internet and have no antivirus program or firewall interfering.");
+				showMessageBox("获取版本信息失败. 请确保您已连接到互联网并且没有杀毒软件或防火墙干扰连接.");
 				if (recheck)
 				{
 					return false;
@@ -257,7 +257,7 @@ namespace Stand_Launchpad
 			}
 			if (versions[0] != launchpad_update_version)
 			{
-				if (showMessageBox("Launchpad " + versions[0] + " is available. Would you like to download it?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+				if (showMessageBox("新版启动器 " + versions[0] + " 可用. 您想现在下载吗?", MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
 					Process.Start("https://stand.gg/launchpad_update");
 				}
@@ -282,7 +282,7 @@ namespace Stand_Launchpad
 		private bool downloadStandDll()
 		{
 			bool success = true;
-			InfoText.Text = "Downloading Stand " + versions[1] + "...";
+			InfoText.Text = "正在下载 Stand" + versions[1] + "...";
 			download_progress = 0;
 			progressBar1.Show();
 			var t = Task.Run(() =>
@@ -306,7 +306,7 @@ namespace Stand_Launchpad
 			if (new FileInfo(stand_dll).Length < 1024)
 			{
 				File.Delete(stand_dll);
-				showMessageBox("It looks like the DLL download has failed. Ensure you have no antivirus program interfering.");
+				showMessageBox("似乎DLL下载失败了. 请确保没有杀毒软件进行干扰.");
 				success = false;
 			}
 			progressBar1.Hide();
@@ -352,7 +352,7 @@ namespace Stand_Launchpad
 				{
 					if (Properties.Settings.Default.Advanced && AutoInjectDelaySeconds.Value > 0)
 					{
-						InfoText.Text = "Automatically injecting in a few seconds...";
+						InfoText.Text = "将在几秒内自动注入...";
 						AutoInjectTimer.Interval = (int)AutoInjectDelaySeconds.Value * 1000;
 						AutoInjectTimer.Start();
 					}
@@ -363,12 +363,12 @@ namespace Stand_Launchpad
 				}
 				else
 				{
-					InfoText.Text = "Ready to inject.";
+					InfoText.Text = "准备注入.";
 				}
 			}
 			else
 			{
-				InfoText.Text = "Ready to inject; just start the game.";
+				InfoText.Text = "准备注入; 请启动游戏.";
 				if (game_was_open)
 				{
 					game_was_open = false;
@@ -416,7 +416,7 @@ namespace Stand_Launchpad
 					dlls.Remove(stand_dll);
 				}
 			}
-			InfoText.Text = "Injecting...";
+			InfoText.Text = "注入中...";
 			int injected = 0;
 			IntPtr pHandle = OpenProcess(1082u, 1, (uint)gta_pid);
 			if (pHandle == IntPtr.Zero)
@@ -485,12 +485,12 @@ namespace Stand_Launchpad
 					{
 						this.Activate();
 						failedBecauseOfAntiVirus = true;
-						showMessageBox("Your antivirus seems to be preventing injection.\nDisable your antivirus or add an exclusion and try again.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						showMessageBox("您的杀毒软件似乎阻止了注入.\n请禁用杀毒软件或添加排除项,然后重试.", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 				}
 				CloseHandle(pHandle);
 			}
-			InfoText.Text = "Injected " + injected.ToString() + "/" + dlls.Count.ToString() + " DLLs.";
+			InfoText.Text = "已注入 " + injected.ToString() + "/" + dlls.Count.ToString() + " DLL.";
 
 			if (injected == 0)
 			{
@@ -499,7 +499,7 @@ namespace Stand_Launchpad
 					&& !failedBecauseOfAntiVirus
 					)
 				{
-					showMessageBox("No DLL was injected. You may need to start the Launchpad as Administrator.");
+					showMessageBox("没有DLL被注入. 您可能需要以管理员身份启动启动器.");
 				}
 
 				EnableReInject();
@@ -519,7 +519,7 @@ namespace Stand_Launchpad
 
 		private DialogResult showMessageBox(string message, MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.None)
 		{
-			return MessageBox.Show(message, "Stand Launchpad " + launchpad_display_version, buttons, icon);
+			return MessageBox.Show(message, "Stand 启动器 " + launchpad_display_version, buttons, icon);
 		}
 
 		private void Launchpad_FormClosing(object sender, FormClosingEventArgs e)
@@ -574,7 +574,7 @@ namespace Stand_Launchpad
 			{
 				Width = width_advanced;
 				MinimizeBox = true;
-				InjectBtn.Text = "Inject";
+				InjectBtn.Text = "注入";
 				AutoInjectDelaySeconds.Visible = true;
 				AddBtn.TabStop = true;
 				RemoveBtn.TabStop = true;
@@ -584,7 +584,7 @@ namespace Stand_Launchpad
 			{
 				MinimizeBox = false;
 				Width = width_simple;
-				InjectBtn.Text = "Inject Stand " + versions[1];
+				InjectBtn.Text = "注入 Stand " + versions[1];
 				AutoInjectDelaySeconds.Visible = false;
 				AddBtn.TabStop = false;
 				RemoveBtn.TabStop = false;
@@ -640,7 +640,7 @@ namespace Stand_Launchpad
 			if (!AutoInjectCheckBox.Checked && AutoInjectTimer.Enabled)
 			{
 				AutoInjectTimer.Stop();
-				InfoText.Text = "You may inject now.";
+				InfoText.Text = "您现在可以注入.";
 			}
 		}
 
@@ -676,7 +676,7 @@ namespace Stand_Launchpad
 		{
 			if (!checkForUpdate(true))
 			{
-				showMessageBox("Everything up-to-date.");
+				showMessageBox("所有都是最新的.");
 			}
 			processGtaPidUpdate(false);
 		}
@@ -724,7 +724,7 @@ namespace Stand_Launchpad
 					}
 					else
 					{
-						showMessageBox("Whoops, looks like Steam isn't installed. Try selecting a different launcher in the dropdown.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+						showMessageBox("哎呀, 似乎没有安装Steam. 请尝试在下拉菜单中选择其他的平台启动器.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					}
 					break;
 				case (int)LauncherId.RSG:
