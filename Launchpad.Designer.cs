@@ -147,7 +147,7 @@
 			// 
 			this.AutoInjectDelaySeconds.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
 			this.AutoInjectDelaySeconds.ForeColor = System.Drawing.Color.White;
-			this.AutoInjectDelaySeconds.Location = new System.Drawing.Point(415, 15);
+			this.AutoInjectDelaySeconds.Location = new System.Drawing.Point(350, 15);
 			this.AutoInjectDelaySeconds.Maximum = new decimal(new int[] {
 			60,
 			0,
