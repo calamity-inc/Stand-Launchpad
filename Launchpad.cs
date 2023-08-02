@@ -39,14 +39,14 @@ namespace Stand_Launchpad
 		[DllImport("kernel32.dll", SetLastError = true)]
 		private static extern IntPtr GetModuleHandle(string lpModuleName);
 
-		[DllImport("kernel32.dll", SetLastError = true)]
-		private static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, IntPtr dwSize, uint flAllocationType, uint flProtect);
+		[UnmanagedFunctionPointer(CallingConvention.StdCall, SetLastError = true)]
+		private delegate IntPtr VirtualAllocExDelegate(IntPtr hProcess, IntPtr lpAddress, IntPtr dwSize, uint flAllocationType, uint flProtect);
 
-		[DllImport("kernel32.dll", SetLastError = true)]
-		private static extern int WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] buffer, uint size, int lpNumberOfBytesWritten);
+		[UnmanagedFunctionPointer(CallingConvention.StdCall, SetLastError = true)]
+		private delegate int WriteProcessMemoryDelegate(IntPtr hProcess, IntPtr lpBaseAddress, byte[] buffer, uint size, int lpNumberOfBytesWritten);
 
-		[DllImport("kernel32.dll", SetLastError = true)]
-		private static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttribute, IntPtr dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
+		[UnmanagedFunctionPointer(CallingConvention.StdCall, SetLastError = true)]
+		private delegate IntPtr CreateRemoteThreadDelegate(IntPtr hProcess, IntPtr lpThreadAttribute, IntPtr dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
 
 		[DllImport("dwmapi.dll", SetLastError = true)]
 		private static extern int DwmSetWindowAttribute(IntPtr hwnd, uint dwAttribute, int[] pvAttribute, uint cbAttribute);
@@ -425,7 +425,8 @@ namespace Stand_Launchpad
 			}
 			else
 			{
-				IntPtr procAddress = GetProcAddress(GetModuleHandle("kernel32.dll"), "LoadLibraryW");
+				IntPtr hKernel32 = GetModuleHandle("kernel32.dll");
+				IntPtr procAddress = GetProcAddress(hKernel32, "LoadLibraryW");
 				if (procAddress == IntPtr.Zero)
 				{
 					Console.WriteLine("Failed to find LoadLibraryW.");
@@ -451,6 +452,9 @@ namespace Stand_Launchpad
 							}
 						}
 					}
+					var VirtualAllocEx = (VirtualAllocExDelegate)Marshal.GetDelegateForFunctionPointer(GetProcAddress(hKernel32, "VirtualAllocEx"), typeof(VirtualAllocExDelegate));
+					var WriteProcessMemory = (WriteProcessMemoryDelegate)Marshal.GetDelegateForFunctionPointer(GetProcAddress(hKernel32, "WriteProcessMemory"), typeof(WriteProcessMemoryDelegate));
+					var CreateRemoteThread = (CreateRemoteThreadDelegate)Marshal.GetDelegateForFunctionPointer(GetProcAddress(hKernel32, "CreateRemoteThread"), typeof(CreateRemoteThreadDelegate));
 					try
 					{
 						foreach (string dll in dlls)
