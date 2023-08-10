@@ -38,6 +38,8 @@
 			this.AdvancedBtn = new System.Windows.Forms.Button();
 			this.AddBtn = new System.Windows.Forms.Button();
 			this.RemoveBtn = new System.Windows.Forms.Button();
+			this.UpBtn = new System.Windows.Forms.Button();
+			this.DownBtn = new System.Windows.Forms.Button();
 			this.AutoInjectDelaySeconds = new System.Windows.Forms.NumericUpDown();
 			this.AutoInjectDelayLabel = new System.Windows.Forms.Label();
 			this.AutoInjectTimer = new System.Windows.Forms.Timer(this.components);
@@ -122,7 +124,7 @@
 			this.AddBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(43)))));
 			this.AddBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(25)))), ((int)(((byte)(29)))));
 			this.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.AddBtn.Location = new System.Drawing.Point(567, 12);
+			this.AddBtn.Location = new System.Drawing.Point(504, 12);
 			this.AddBtn.Name = "AddBtn";
 			this.AddBtn.Size = new System.Drawing.Size(47, 23);
 			this.AddBtn.TabIndex = 12;
@@ -135,13 +137,39 @@
 			this.RemoveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(43)))));
 			this.RemoveBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(25)))), ((int)(((byte)(29)))));
 			this.RemoveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.RemoveBtn.Location = new System.Drawing.Point(620, 12);
+			this.RemoveBtn.Location = new System.Drawing.Point(557, 12);
 			this.RemoveBtn.Name = "RemoveBtn";
 			this.RemoveBtn.Size = new System.Drawing.Size(65, 23);
 			this.RemoveBtn.TabIndex = 13;
 			this.RemoveBtn.Text = "Remove";
 			this.RemoveBtn.UseVisualStyleBackColor = false;
 			this.RemoveBtn.Click += new System.EventHandler(this.RemoveBtn_Click);
+			// 
+			// UpBtn
+			// 
+			this.UpBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(43)))));
+			this.UpBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(25)))), ((int)(((byte)(29)))));
+			this.UpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.UpBtn.Location = new System.Drawing.Point(631, 64);
+			this.UpBtn.Name = "UpBtn";
+			this.UpBtn.Size = new System.Drawing.Size(47, 23);
+			this.UpBtn.TabIndex = 15;
+			this.UpBtn.Text = "Up";
+			this.UpBtn.UseVisualStyleBackColor = false;
+			this.UpBtn.Click += new System.EventHandler(this.UpBtn_Click);
+			// 
+			// DownBtn
+			// 
+			this.DownBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(43)))));
+			this.DownBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(25)))), ((int)(((byte)(29)))));
+			this.DownBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.DownBtn.Location = new System.Drawing.Point(631, 93);
+			this.DownBtn.Name = "DownBtn";
+			this.DownBtn.Size = new System.Drawing.Size(47, 23);
+			this.DownBtn.TabIndex = 16;
+			this.DownBtn.Text = "Down";
+			this.DownBtn.UseVisualStyleBackColor = false;
+			this.DownBtn.Click += new System.EventHandler(this.DownBtn_Click);
 			// 
 			// AutoInjectDelaySeconds
 			// 
@@ -244,7 +272,7 @@
 			this.DllList.Location = new System.Drawing.Point(235, 41);
 			this.DllList.Margin = new System.Windows.Forms.Padding(6);
 			this.DllList.Name = "DllList";
-			this.DllList.Size = new System.Drawing.Size(450, 122);
+			this.DllList.Size = new System.Drawing.Size(387, 122);
 			this.DllList.TabIndex = 14;
 			this.DllList.UseCompatibleStateImageBehavior = false;
 			this.DllList.View = System.Windows.Forms.View.List;
@@ -314,6 +342,8 @@
 			this.Controls.Add(this.ChanglogBtn);
 			this.Controls.Add(this.AutoInjectDelayLabel);
 			this.Controls.Add(this.AutoInjectDelaySeconds);
+			this.Controls.Add(this.UpBtn);
+			this.Controls.Add(this.DownBtn);
 			this.Controls.Add(this.RemoveBtn);
 			this.Controls.Add(this.AddBtn);
 			this.Controls.Add(this.AdvancedBtn);
@@ -344,6 +374,8 @@
 		private System.Windows.Forms.Timer ProcessScanTimer;
 		private System.Windows.Forms.Button AddBtn;
 		private System.Windows.Forms.Button RemoveBtn;
+		private System.Windows.Forms.Button UpBtn;
+		private System.Windows.Forms.Button DownBtn;
 		private System.Windows.Forms.NumericUpDown AutoInjectDelaySeconds;
 		private System.Windows.Forms.Label AutoInjectDelayLabel;
 		private System.Windows.Forms.Timer AutoInjectTimer;
