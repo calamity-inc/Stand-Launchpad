@@ -372,7 +372,7 @@ namespace Stand_Launchpad
 				if (game_was_open)
 				{
 					game_was_open = false;
-					can_auto_inject = false;
+					can_auto_inject = AutoInjectCheckBox.Checked;
 					GameClosedTimer.Start();
 				}
 			}
