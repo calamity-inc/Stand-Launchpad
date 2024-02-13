@@ -81,6 +81,8 @@ namespace Stand_Launchpad
 		private bool can_auto_inject = true;
 		private bool any_successful_injection = false;
 
+		private const string UpdCheckBtnOriginalText;
+
 		public Launchpad()
 		{
 			stand_dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand";
@@ -148,6 +150,8 @@ namespace Stand_Launchpad
 
 			toggleInjectOrLaunchBtn(false);
 			UpdateTimer.Start();
+
+			UpdCheckBtnOriginalText = UpdCheckBtn.Text;
 		}
 
 		private void UpdateTimer_Tick(object sender, EventArgs e)
@@ -676,13 +680,16 @@ namespace Stand_Launchpad
 			Process.Start(stand_dir);
 		}
 
-		private void UpdCheckBtn_Click(object sender, EventArgs e)
+		async private void UpdCheckBtn_Click(object sender, EventArgs e)
 		{
 			if (!checkForUpdate(true))
 			{
-				showMessageBox("Everything up-to-date.");
+				UpdCheckBtn.Text = "Everything up-to-date.";
 			}
 			processGtaPidUpdate(false);
+
+			await Task.Delay(3000);
+			UpdCheckBtn.Text = UpdCheckBtnOriginalText;
 		}
 
 		private void DllList_DragOver(object sender, DragEventArgs e)
