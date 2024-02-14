@@ -81,8 +81,6 @@ namespace Stand_Launchpad
 		private bool can_auto_inject = true;
 		private bool any_successful_injection = false;
 
-		private const string UpdCheckBtnOriginalText;
-
 		public Launchpad()
 		{
 			stand_dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stand";
@@ -150,8 +148,6 @@ namespace Stand_Launchpad
 
 			toggleInjectOrLaunchBtn(false);
 			UpdateTimer.Start();
-
-			UpdCheckBtnOriginalText = UpdCheckBtn.Text;
 		}
 
 		private void UpdateTimer_Tick(object sender, EventArgs e)
@@ -682,6 +678,7 @@ namespace Stand_Launchpad
 
 		async private void UpdCheckBtn_Click(object sender, EventArgs e)
 		{
+			string UpdCheckBtnOriginalText = UpdCheckBtn.Text;
 			if (!checkForUpdate(true))
 			{
 				UpdCheckBtn.Text = "Everything up-to-date.";
