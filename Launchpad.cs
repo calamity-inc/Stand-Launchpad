@@ -734,12 +734,12 @@ namespace Stand_Launchpad
 				case (int)LauncherId.RSG:
 					try
 					{
-						using (var key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\WOW6432Node\\Rockstar Games\\Launcher"))
+						using (var key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\WOW6432Node\\Rockstar Games\\Grand Theft Auto V"))
 						{
 							var path = (string) key?.GetValue("InstallFolder");
 							if (path != null)
 							{
-								Process.Start(path + "\\Launcher.exe", "-minmodeApp=gta5");
+								Process.Start(path + "\\PlayGTAV.exe");
 							}
 						}
 					}
