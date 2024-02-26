@@ -36,8 +36,9 @@
 			this.AutoInjectCheckBox = new System.Windows.Forms.CheckBox();
 			this.CustomDllDialog = new System.Windows.Forms.OpenFileDialog();
 			this.AdvancedBtn = new System.Windows.Forms.Button();
-			this.AddBtn = new System.Windows.Forms.Button();
 			this.RemoveBtn = new System.Windows.Forms.Button();
+			this.UpBtn = new System.Windows.Forms.Button();
+			this.DownBtn = new System.Windows.Forms.Button();
 			this.AutoInjectDelaySeconds = new System.Windows.Forms.NumericUpDown();
 			this.AutoInjectDelayLabel = new System.Windows.Forms.Label();
 			this.AutoInjectTimer = new System.Windows.Forms.Timer(this.components);
@@ -53,6 +54,7 @@
 			this.dropDownEntryBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.LaunchBtn = new System.Windows.Forms.Button();
 			this.progressBar1 = new System.Windows.Forms.ProgressBar();
+			this.AddBtn = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.AutoInjectDelaySeconds)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dropDownEntryBindingSource)).BeginInit();
 			this.SuspendLayout();
@@ -117,19 +119,6 @@
 			this.AdvancedBtn.UseVisualStyleBackColor = false;
 			this.AdvancedBtn.Click += new System.EventHandler(this.AdvancedBtn_Click);
 			// 
-			// AddBtn
-			// 
-			this.AddBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(43)))));
-			this.AddBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(25)))), ((int)(((byte)(29)))));
-			this.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.AddBtn.Location = new System.Drawing.Point(567, 12);
-			this.AddBtn.Name = "AddBtn";
-			this.AddBtn.Size = new System.Drawing.Size(47, 23);
-			this.AddBtn.TabIndex = 12;
-			this.AddBtn.Text = "Add";
-			this.AddBtn.UseVisualStyleBackColor = false;
-			this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
-			// 
 			// RemoveBtn
 			// 
 			this.RemoveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(43)))));
@@ -142,6 +131,32 @@
 			this.RemoveBtn.Text = "Remove";
 			this.RemoveBtn.UseVisualStyleBackColor = false;
 			this.RemoveBtn.Click += new System.EventHandler(this.RemoveBtn_Click);
+			// 
+			// UpBtn
+			// 
+			this.UpBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+			this.UpBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+			this.UpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.UpBtn.Location = new System.Drawing.Point(530, 12);
+			this.UpBtn.Name = "UpBtn";
+			this.UpBtn.Size = new System.Drawing.Size(17, 23);
+			this.UpBtn.TabIndex = 15;
+			this.UpBtn.Text = "↑";
+			this.UpBtn.UseVisualStyleBackColor = false;
+			this.UpBtn.Click += new System.EventHandler(this.UpBtn_Click);
+			// 
+			// DownBtn
+			// 
+			this.DownBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+			this.DownBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+			this.DownBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.DownBtn.Location = new System.Drawing.Point(547, 12);
+			this.DownBtn.Name = "DownBtn";
+			this.DownBtn.Size = new System.Drawing.Size(17, 23);
+			this.DownBtn.TabIndex = 16;
+			this.DownBtn.Text = "↓";
+			this.DownBtn.UseVisualStyleBackColor = false;
+			this.DownBtn.Click += new System.EventHandler(this.DownBtn_Click);
 			// 
 			// AutoInjectDelaySeconds
 			// 
@@ -299,12 +314,25 @@
 			this.progressBar1.TabIndex = 0;
 			this.progressBar1.Visible = false;
 			// 
+			// AddBtn
+			// 
+			this.AddBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(43)))));
+			this.AddBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(25)))), ((int)(((byte)(29)))));
+			this.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.AddBtn.Location = new System.Drawing.Point(567, 12);
+			this.AddBtn.Name = "AddBtn";
+			this.AddBtn.Size = new System.Drawing.Size(47, 23);
+			this.AddBtn.TabIndex = 17;
+			this.AddBtn.Text = "Add";
+			this.AddBtn.UseVisualStyleBackColor = false;
+			// 
 			// Launchpad
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
 			this.ClientSize = new System.Drawing.Size(694, 175);
+			this.Controls.Add(this.AddBtn);
 			this.Controls.Add(this.progressBar1);
 			this.Controls.Add(this.LaunchBtn);
 			this.Controls.Add(this.LauncherType);
@@ -314,8 +342,9 @@
 			this.Controls.Add(this.ChanglogBtn);
 			this.Controls.Add(this.AutoInjectDelayLabel);
 			this.Controls.Add(this.AutoInjectDelaySeconds);
+			this.Controls.Add(this.UpBtn);
+			this.Controls.Add(this.DownBtn);
 			this.Controls.Add(this.RemoveBtn);
-			this.Controls.Add(this.AddBtn);
 			this.Controls.Add(this.AdvancedBtn);
 			this.Controls.Add(this.AutoInjectCheckBox);
 			this.Controls.Add(this.InfoText);
@@ -342,8 +371,9 @@
 		private System.Windows.Forms.OpenFileDialog CustomDllDialog;
 		private System.Windows.Forms.Button AdvancedBtn;
 		private System.Windows.Forms.Timer ProcessScanTimer;
-		private System.Windows.Forms.Button AddBtn;
 		private System.Windows.Forms.Button RemoveBtn;
+		private System.Windows.Forms.Button UpBtn;
+		private System.Windows.Forms.Button DownBtn;
 		private System.Windows.Forms.NumericUpDown AutoInjectDelaySeconds;
 		private System.Windows.Forms.Label AutoInjectDelayLabel;
 		private System.Windows.Forms.Timer AutoInjectTimer;
@@ -359,6 +389,7 @@
 		private System.Windows.Forms.Button LaunchBtn;
 		private System.Windows.Forms.ProgressBar progressBar1;
 		private System.Windows.Forms.ColumnHeader Column;
+		private System.Windows.Forms.Button AddBtn;
 	}
 }
 

@@ -606,6 +606,36 @@ namespace Stand_Launchpad
 			removeSelectedDll();
 		}
 
+		private void UpBtn_Click(object sender, EventArgs e)
+		{
+			if (DllList.SelectedItems.Count == 1)
+			{
+				int selectedIndex = DllList.SelectedIndices[0];
+				if (selectedIndex > 1)
+				{
+					var selectedItem = DllList.Items[selectedIndex];
+					DllList.Items.RemoveAt(selectedIndex);
+					DllList.Items.Insert(selectedIndex - 1, selectedItem);
+					DllList.Items[selectedIndex - 1].Selected = true;
+				}
+			}
+		}
+
+		private void DownBtn_Click(object sender, EventArgs e)
+		{
+			if (DllList.SelectedItems.Count == 1)
+			{
+				int selectedIndex = DllList.SelectedIndices[0];
+				if (selectedIndex != 0 && selectedIndex < DllList.Items.Count - 1)
+				{
+					var selectedItem = DllList.Items[selectedIndex];
+					DllList.Items.RemoveAt(selectedIndex);
+					DllList.Items.Insert(selectedIndex + 1, selectedItem);
+					DllList.Items[selectedIndex + 1].Selected = true;
+				}
+			}
+		}
+
 		private void removeSelectedDll()
 		{
 			if (DllList.SelectedItems.Count == 1)
