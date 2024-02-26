@@ -617,6 +617,7 @@ namespace Stand_Launchpad
 					DllList.Items.RemoveAt(selectedIndex);
 					DllList.Items.Insert(selectedIndex - 1, selectedItem);
 					DllList.Items[selectedIndex - 1].Selected = true;
+					saveSettings();
 				}
 			}
 		}
@@ -632,6 +633,7 @@ namespace Stand_Launchpad
 					DllList.Items.RemoveAt(selectedIndex);
 					DllList.Items.Insert(selectedIndex + 1, selectedItem);
 					DllList.Items[selectedIndex + 1].Selected = true;
+					saveSettings();
 				}
 			}
 		}
