@@ -119,6 +119,17 @@ namespace Stand_Launchpad
 				new DropDownEntry((int)LauncherId.RSG, "Rockstar Games"),
 			};
 
+			try
+			{
+				bool read = Properties.Settings.Default.MustUpgrade;
+			}
+			catch (Exception)
+			{
+				showMessageBox("Your Launchpad configuration seems to be corrupted. The easiest fix for this is just heading into %localappdata%\\Calamity,_Inc\\ and deleting the Launchpad folders.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Environment.Exit(2);
+				return;
+			}
+
 			if (Properties.Settings.Default.MustUpgrade)
 			{
 				Properties.Settings.Default.Upgrade();
