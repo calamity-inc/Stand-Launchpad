@@ -184,7 +184,7 @@ namespace Stand_Launchpad
 			return file.Name.Substring(6, file.Name.Length - 6 - 4);
 		}
 
-		private bool checkForUpdate(bool recheck)
+		private int checkForUpdate(bool recheck)
 		{
 			HttpClient httpClient = new HttpClient();
 			Task<string> httpTask = httpClient.GetStringAsync("https://stand.gg/versions.txt");
@@ -210,7 +210,7 @@ namespace Stand_Launchpad
 				showMessageBox("Failed to get version information. Ensure you're connected to the internet and have no antivirus program or firewall interfering.");
 				if (recheck)
 				{
-					return false;
+					return -1;
 				}
 				Application.Exit();
 			}
@@ -274,7 +274,7 @@ namespace Stand_Launchpad
 				}
 				any_updates = true;
 			}
-			return any_updates;
+			return any_updates ? 1 : 0;
 		}
 
 		private void onDownloadProgress(object sender, DownloadProgressChangedEventArgs e)
@@ -721,7 +721,7 @@ namespace Stand_Launchpad
 
 		private void UpdCheckBtn_Click(object sender, EventArgs e)
 		{
-			if (!checkForUpdate(true))
+			if (checkForUpdate(true) == 0)
 			{
 				showMessageBox("Everything up-to-date.");
 			}
