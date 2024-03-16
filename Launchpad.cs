@@ -197,11 +197,14 @@ namespace Stand_Launchpad
 			}
 			catch (Exception)
 			{
-				foreach (FileInfo file in bin_di.GetFiles())
+				if (!recheck)
 				{
-					if (isStandDll(file))
+					foreach (FileInfo file in bin_di.GetFiles())
 					{
-						versions_string = launchpad_update_version + ":" + getStandVersionFromDll(file);
+						if (isStandDll(file))
+						{
+							versions_string = launchpad_update_version + ":" + getStandVersionFromDll(file);
+						}
 					}
 				}
 			}
