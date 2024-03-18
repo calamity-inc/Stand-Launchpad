@@ -325,6 +325,7 @@
 			this.AddBtn.TabIndex = 17;
 			this.AddBtn.Text = "Add";
 			this.AddBtn.UseVisualStyleBackColor = false;
+			this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
 			// 
 			// Launchpad
 			// 
